@@ -20,7 +20,7 @@ const TopSection = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  width: 100%;
+  width: 110%;
   max-width: 850px;
   padding: 20px 40px;
   display: flex;

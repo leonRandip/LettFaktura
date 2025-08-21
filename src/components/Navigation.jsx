@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NavContainer = styled.nav`
   background: transparent;
@@ -144,21 +145,21 @@ const HamburgerButton = styled.button`
   }
 `;
 
-const MobileMenu = styled.div`
-  display: none;
+const MobileMenu = styled(motion.div)`
   position: fixed;
   width: 200px;
   top: 90px;
-  left: 60px;
+  left: 40px;
   right: 0;
   background: white;
   backdrop-filter: blur(10px);
   padding: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  overflow: hidden;
 
   @media (max-width: 768px) {
-    display: ${(props) => (props.isOpen ? "block" : "none")};
+    display: block;
   }
 `;
 
@@ -287,23 +288,39 @@ const Navigation = () => {
         </NavContent>
       </NavContainer>
 
-      <MobileMenu isOpen={isMobileMenuOpen}>
-        <MobileNavLink href="#" onClick={closeMobileMenu}>
-          {getText("nav_home")}
-        </MobileNavLink>
-        <MobileNavLink href="#" onClick={closeMobileMenu}>
-          {getText("nav_order")}
-        </MobileNavLink>
-        <MobileNavLink href="#" onClick={closeMobileMenu}>
-          {getText("nav_customers")}
-        </MobileNavLink>
-        <MobileNavLink href="#" onClick={closeMobileMenu}>
-          {getText("nav_about")}
-        </MobileNavLink>
-        <MobileNavLink href="#" onClick={closeMobileMenu}>
-          {getText("nav_contact")}
-        </MobileNavLink>
-      </MobileMenu>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <MobileMenu
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <MobileNavLink href="#" onClick={closeMobileMenu}>
+                {getText("nav_home")}
+              </MobileNavLink>
+              <MobileNavLink href="#" onClick={closeMobileMenu}>
+                {getText("nav_order")}
+              </MobileNavLink>
+              <MobileNavLink href="#" onClick={closeMobileMenu}>
+                {getText("nav_customers")}
+              </MobileNavLink>
+              <MobileNavLink href="#" onClick={closeMobileMenu}>
+                {getText("nav_about")}
+              </MobileNavLink>
+              <MobileNavLink href="#" onClick={closeMobileMenu}>
+                {getText("nav_contact")}
+              </MobileNavLink>
+            </motion.div>
+          </MobileMenu>
+        )}
+      </AnimatePresence>
     </>
   );
 };
