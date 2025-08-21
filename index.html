@@ -28,7 +28,25 @@
     <title>123 Fakturera</title>
   </head>
   <body>
+    <div class="background"></div>
     <div id="root"></div>
+    <script>
+      // Background fixed workaround for mobile compatibility
+      document.addEventListener("scroll", function () {
+        const background = document.querySelector(".background");
+        const content = document.querySelector("#root");
+        const scrollPosition = window.scrollY;
+        const contentTop = content.offsetTop;
+
+        if (scrollPosition >= contentTop) {
+          background.style.position = "fixed";
+          background.style.top = "0";
+        } else {
+          background.style.position = "absolute";
+          background.style.top = "0";
+        }
+      });
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
