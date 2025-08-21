@@ -17,10 +17,14 @@ const TopSection = styled.div`
   max-width: 900px;
   padding: 30px 20px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ContentWrapper = styled.div`
-  width: 110%;
+  width: 100%;
   max-width: 850px;
   padding: 20px 40px;
   display: flex;
@@ -38,6 +42,9 @@ const TermsCard = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 100%;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const BottomSection = styled.div`
@@ -46,6 +53,10 @@ const BottomSection = styled.div`
   max-width: 900px;
   padding: 0 20px;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.h1`
@@ -82,9 +93,11 @@ const CloseButton = styled.button`
   &:active {
     transform: translateY(0);
   }
+
   @media (max-width: 768px) {
     width: 250px;
     padding: 20px 40px;
+    margin: 0 auto;
   }
 `;
 
@@ -95,8 +108,12 @@ const TermsContent = styled.div`
   font-size: 15px;
   line-height: 23px;
   text-align: center;
+  width: 100%;
+  max-width: 100%;
+
   p {
     margin-bottom: 1rem;
+    text-align: left;
   }
 
   strong,

@@ -21,10 +21,12 @@ const NavContent = styled.div`
   align-items: center;
   height: 70px;
   padding: 0 40px;
+  position: relative;
 
   @media (max-width: 768px) {
     justify-content: space-between;
     padding: 0 20px;
+    width: 100%;
   }
 `;
 
@@ -89,19 +91,27 @@ const LanguageDropdown = styled.div`
   @media (max-width: 768px) {
     padding: 8px 8px;
     font-size: 14px;
+    position: relative;
+    right: 0;
   }
 `;
 
 const DropdownMenu = styled.div`
   position: absolute;
   top: 100%;
-  right: 160;
+  right: 0;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   z-index: 1001;
   display: ${(props) => (props.isOpen ? "block" : "none")};
   overflow: hidden;
+  min-width: 200px;
+
+  @media (max-width: 768px) {
+    right: 0;
+    min-width: 180px;
+  }
 `;
 
 const DropdownItem = styled.div`
@@ -142,6 +152,10 @@ const HamburgerButton = styled.button`
     order: -1;
     padding: 4px;
     font-size: 30px;
+    position: absolute;
+   
+    top: 50%;
+    transform: translateY(-50%);
   }
 `;
 
@@ -183,9 +197,14 @@ const RightContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
+  position: relative;
 
   @media (max-width: 768px) {
-    gap: 225px;
+    gap: 0;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 `;
 
@@ -235,6 +254,7 @@ const Navigation = () => {
     <>
       <NavContainer>
         <NavContent>
+        <HamburgerButton onClick={toggleMobileMenu}>☰</HamburgerButton>
           <Logo>
             <img
               src="https://storage.123fakturera.se/public/icons/diamond.png"
@@ -283,7 +303,7 @@ const Navigation = () => {
               </DropdownMenu>
             </div>
 
-            <HamburgerButton onClick={toggleMobileMenu}>☰</HamburgerButton>
+           
           </RightContainer>
         </NavContent>
       </NavContainer>
