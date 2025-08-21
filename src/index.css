@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+    overscroll-behavior: none;
+  background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: center 20%;
+  }
+}
+/* Custom scrollbar styling for root/body */
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.818) !important;
+  border-radius: 4px;
+  border: none;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+
+body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Hide scrollbar when not scrolling */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.818) transparent;
+}
+
+/* For webkit browsers - hide scrollbar by default, show on hover */
+body::-webkit-scrollbar {
+  background: transparent;
+}
+
+body:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.818) !important;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  min-height: 100%;
+}
+
+/* Focus styles for accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
