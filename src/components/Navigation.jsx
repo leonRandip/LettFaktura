@@ -195,6 +195,47 @@ const Navigation = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  // Create fixed background div for mobile compatibility
+  useEffect(() => {
+    // Check if background container already exists
+    let backgroundContainer = document.querySelector(".background-container");
+
+    if (!backgroundContainer) {
+      // Create background div
+      backgroundContainer = document.createElement("div");
+      backgroundContainer.className = "background-container";
+
+      // Check if mobile
+      const isMobile = window.innerWidth <= 768;
+
+      backgroundContainer.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: url('https://storage.123fakturera.se/public/wallpapers/sverige43.jpg') no-repeat center ${
+          isMobile ? "20%" : "center"
+        };
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+      `;
+
+      // Insert at the beginning of body
+      document.body.insertBefore(backgroundContainer, document.body.firstChild);
+    }
+
+    // Cleanup function
+    return () => {
+      if (backgroundContainer && backgroundContainer.parentNode) {
+        backgroundContainer.parentNode.removeChild(backgroundContainer);
+      }
+    };
+  }, []);
+
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {

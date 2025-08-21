@@ -8,12 +8,7 @@
 html {
   scroll-behavior: smooth;
   min-height: 100%;
-  background: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg")
-    no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+ 
 }
 
 body {
